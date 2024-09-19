@@ -1,0 +1,12 @@
+{
+  "name": "ProjectRoot",
+  "version": "1.0.0",
+  "scripts": {
+    "start:client": "cd Front && npm run dev",
+    "start:server": "cd Back && npx nodemon server.js",
+    "start": "concurrently \"npm run start:client\" \"npm run start:server\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
