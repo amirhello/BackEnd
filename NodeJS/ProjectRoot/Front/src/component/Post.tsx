@@ -8,6 +8,7 @@ function PostData() {
   const [price, setPrice] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [count, setCount] = useState<number>(0);
+
   const mutationPost = useMutation({
     mutationFn: Post,
     onSuccess: () => {
@@ -17,6 +18,10 @@ function PostData() {
   function handelPost() {
     let obj = { price, title, name, count };
     mutationPost.mutate(obj);
+    setCount(0);
+    setPrice(0);
+    setTitle("");
+    setName("");
   }
   // if (mutationPost.isError) {
   //   return (
@@ -29,63 +34,69 @@ function PostData() {
   // }
 
   return (
-    <div
-      className=" border bg-slate-200 border-black p-3 flex-row w-full
-     "
-    >
-      <div className=" flex justify-between items-center ">
+    <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-6 w-full">
+      <h2 className="text-xl font-semibold mb-4 text-gray-700">
+        Create a New Product
+      </h2>
+
+      <div className="flex flex-col sm:flex-row justify-between flex-wrap items-center space-y-4 sm:space-y-0 sm:space-x-2">
         <input
-          className="border-2 ml-1 rounded-lg text-center"
+          className="border-2 border-gray-400 rounded-lg p-3 text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
           required
+          value={name}
           type="text"
           onChange={(e) => setName(e.target.value)}
-          placeholder="name"
+          placeholder="Product Name"
         />
         <input
-          className="border-2 ml-1 rounded-lg text-center"
+          className="border-2 border-gray-400 rounded-lg p-3 text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
           required
+          value={count === 0 ? "" : count}
           type="number"
           onChange={(e) => setCount(Number(e.target.value))}
-          placeholder="count"
+          placeholder="Count"
         />
         <input
-          className="border-2 rounded-lg ml-1 text-center"
+          className="border-2 border-gray-400 rounded-lg p-3 text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
           required
+          value={title}
           type="text"
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="title"
+          placeholder="Product Title"
         />
         <input
-          className="border-2 ml-1 text-center rounded-lg "
+          className="border-2 border-gray-400 rounded-lg p-3 text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
           required
+          value={price === 0 ? "" : price}
           type="number"
           onChange={(e) => setPrice(Number(e.target.value))}
-          placeholder="price"
+          placeholder="Price"
         />
       </div>
-      <div className="flex justify-center items-center">
+
+      <div className="flex justify-center mt-4">
         <button
-          className="bg-green-300 p-2 rounded-xl mt-2 text-center "
+          className="bg-green-600 text-white p-3 rounded-lg shadow-md hover:bg-green-700 transition duration-200 font-semibold"
           onClick={(e) => {
-            e.preventDefault(); // غیرفعال کردن رفتار پیش‌فرض
+            e.preventDefault();
             handelPost();
           }}
         >
-          creat a new product
+          Create Product
         </button>
       </div>
-      <>
-        {mutationPost.isError ? (
-          <p className="text-red-400">
-            You have some error in creating new product:{" "}
-            {mutationPost.error?.message || "Unknown Error"}
-            ,You should make correct product
-          </p>
-        ) : (
-          <></>
-        )}
-        {mutationPost.isPending ? <>Loading...</> : <></>}
-      </>
+
+      {mutationPost.isError && (
+        <p className="mt-2 text-red-500 text-sm">
+          Error creating product:{" "}
+          {mutationPost.error?.message || "Unknown Error"}. Please check the
+          details.
+        </p>
+      )}
+
+      {mutationPost.isPending && (
+        <p className="mt-2 text-blue-500 text-sm">Loading...</p>
+      )}
     </div>
   );
 }

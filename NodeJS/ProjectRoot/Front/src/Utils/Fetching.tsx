@@ -2,14 +2,11 @@
 export async function Fetching() {
   const response = await fetch("http://localhost:3500/products");
   console.log("fetch is runnig");
-  // console.log(response);
   if (!response.ok) {
     throw new Error("Error fetching data");
   }
-  // console.log(response);
   const data = await response.json();
-  // console.log(data.items);
-  // return data.items; // استخراج آرایه items
+  // console.log(data, " =this is a data ");
   return data;
 }
 
@@ -50,7 +47,7 @@ export async function Put({
     body: JSON.stringify(updatedProduct),
   });
   const data = await response.json();
-  console.log(data.details);
+  // console.log(data.details);
   if (response.status === 400) {
     throw new Error(
       `Validation failed: ${data.details

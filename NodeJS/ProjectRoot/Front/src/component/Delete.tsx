@@ -18,9 +18,9 @@ export default function Deleting({ id }: { id: number }) {
   }
 
   return (
-    <div>
+    <div className="text-center">
       <button
-        className="bg-red-600 p-2 rounded-xl m-1"
+        className="bg-red-600 text-white px-4 py-2 rounded-xl m-1 shadow-lg hover:bg-red-700 transition-all duration-200 ease-in-out transform hover:scale-105"
         onClick={() => handelDelete(id)}
       >
         Delete Product
