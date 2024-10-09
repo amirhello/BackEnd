@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IndexDB</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      button:focus {
+        outline: none;
+      }
+
+      button:active {
+        background-color: #004494;
+      }
+
+      /* Styles for the table */
+      .table1 {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px; /* Space above the table */
+      }
+
+      .table1 th,
+      .table1 td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .table1 th {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .table1 tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .table1 tbody tr:hover {
+        background-color: #e6f7ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Information</h1>
+    <input id="email" type="text" placeholder="Enter email" />
+    <br />
+    <input id="password" type="text" placeholder="Enter password" />
+    <br />
+    <button id="add">Submit</button>
+    <button id="show">List of users</button>
+    <button id="delete">Delete All Users</button>
+
+    <table class="table1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="/indexDB.js"></script>
+  </body>
+</html>
