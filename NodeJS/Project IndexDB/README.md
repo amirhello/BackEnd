@@ -4,8 +4,6 @@ overview of my project
 
 
 
-Project Description:
-The project you developed with IndexedDB is a simple example of managing user data (such as email and password) on the client side using the browser. Instead of storing data on a server, it is stored and managed locally in the user's browser via IndexedDB.
 
 Overview of the Project:
 Main Page:
